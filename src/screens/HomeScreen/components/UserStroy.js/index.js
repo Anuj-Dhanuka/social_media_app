@@ -1,13 +1,19 @@
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import {PropTypes} from "prop-types"
+
+//assets/fonts
+import { getInterFont } from "../../../../assets/fonts/Inter/interHelper";
+
+//global components
+import UserProfileImage from "../../../../components/UserProfileImage";
 
 function UserStory(props) {
     
     return ( 
-        <View>
-            <Image source={props.profileImage} />
-            <Text>{props.firstName}</Text>
+        <View style={styles.storyContainer}>
+            <UserProfileImage profileImage={props.profileImage} imageDimensions={65} />
+            <Text style={styles.firstName}>{props.firstName}</Text>
         </View>
      );
 }
@@ -17,3 +23,26 @@ UserStory.propTypes = {
 }
 
 export default UserStory;
+
+const styles = StyleSheet.create({
+    userImageContainer: {
+        borderWidth: 1,
+        borderColor: '#F35BAC',
+        padding: 3,
+        borderRadius: 65
+    },
+    storyContainer: {
+        marginRight: 20
+    },
+    image: {
+        width: 65,
+        height: 65
+    },
+    firstName: {
+        ...getInterFont(24, 'SemiBold'),
+        fontSize: 14,
+        color: "#022150",
+        marginTop: 8,
+        textAlign: "center"
+    }
+})
