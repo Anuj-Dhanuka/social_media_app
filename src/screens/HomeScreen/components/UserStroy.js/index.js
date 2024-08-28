@@ -8,6 +8,9 @@ import { getInterFont } from "../../../../assets/fonts/Inter/interHelper";
 //global components
 import UserProfileImage from "../../../../components/UserProfileImage";
 
+//utils
+import { normalize, scaleVertical } from "../../../../utils/dimensionUtils";
+
 function UserStory(props) {
     
     return ( 
@@ -26,23 +29,23 @@ export default UserStory;
 
 const styles = StyleSheet.create({
     userImageContainer: {
-        borderWidth: 1,
+        borderWidth: normalize(1),
         borderColor: '#F35BAC',
-        padding: 3,
-        borderRadius: 65
+        padding: normalize(3),
+        borderRadius: normalize(65)
     },
     storyContainer: {
-        marginRight: 20
+        marginRight: normalize(20)
     },
     image: {
-        width: 65,
-        height: 65
+        width: normalize(65),
+        height: normalize(65)
     },
     firstName: {
         ...getInterFont(24, 'SemiBold'),
-        fontSize: 14,
+        fontSize: normalize(14),
         color: "#022150",
-        marginTop: 8,
+        marginTop: scaleVertical(8),
         textAlign: "center"
     }
 })

@@ -2,6 +2,9 @@ import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import PropTypes from "prop-types"
 
+//utils
+import { normalize } from '../utils/dimensionUtils';
+
 function UserProfileImage(props) {
   return (
     <View style={styles.userImageContainer(props.imageDimensions)}>
@@ -19,9 +22,9 @@ export default UserProfileImage;
 
 const styles = StyleSheet.create({
   userImageContainer: (imageDimensions) => ({
-    borderWidth: 1,
+    borderWidth: normalize(1),
     borderColor: '#F35BAC',
-    padding: 3,
+    padding: normalize(3),
     borderRadius: imageDimensions,
   }),
   image: (imageDimensions) => ({

@@ -1,24 +1,17 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  Text,
-  StyleSheet
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-import { getInterFont } from './src/assets/fonts/Inter/interHelper';
-import { HomeScreen } from './src/screens/HomeScreen';
-
+//screens
+import Navigation from './src/Navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from 'react-native';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <HomeScreen />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <StatusBar backgroundColor='#FFFFFF' barStyle="dark-content" />
+      <Navigation />
+    </SafeAreaProvider>
   );
-}
-
-const styles = StyleSheet.create({
-  view: {flex: 1}
-});
-
+};
 export default App;

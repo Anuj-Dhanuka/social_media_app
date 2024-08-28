@@ -5,7 +5,8 @@ import PropTypes from "prop-types"
 //assets
 import { getInterFont } from "../../../../assets/fonts/Inter/interHelper";
 
-
+//utils
+import { normalize } from "../../../../utils/dimensionUtils";
 
 export const Title = (props) => {
     return (
@@ -21,6 +22,6 @@ const styles = StyleSheet.create({
     text: {
         ...getInterFont(24, 'Bold'),
         color: "#022150",
-        fontSize: 24
+        fontSize: normalize(24)
     }
 })

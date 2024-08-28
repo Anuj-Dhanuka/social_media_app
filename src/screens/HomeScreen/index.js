@@ -10,11 +10,13 @@ import UserPost from './components/UserPost.js/index.js';
 
 //utils
 import {userStories, userPosts} from '../../utils/userArray';
+import { normalize, scaleVertical } from '../../utils/dimensionUtils.js';
 
 //assets
 import {getInterFont} from '../../assets/fonts/Inter/interHelper';
+import { Routes } from '../../Navigation/Routes.js';
 
-export const HomeScreen = () => {
+export const HomeScreen = ({navigation}) => {
   const [userStoriesCurrentPage, setUserStoriesCurrentPage] = useState(1);
   const [userStoriesRenderedData, setUsersStoriesRenderedData] = useState([]);
   const [isLoadingUsersStories, setIsLoadingUsersStories] = useState(false);
@@ -49,7 +51,7 @@ export const HomeScreen = () => {
   }, []);
 
   return (
-    <>
+    <View style={styles.homeContainer}>
       <View style={styles.userPostContainer}>
         <FlatList
           ListHeaderComponent={
@@ -59,7 +61,7 @@ export const HomeScreen = () => {
                 <TouchableOpacity style={styles.envelopButton}>
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    size={20}
+                    size={normalize(20)}
                     color="#898DAE"
                   />
                   <View style={styles.messageNumberContainer}>
@@ -134,32 +136,35 @@ export const HomeScreen = () => {
           )}
         />
       </View>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  homeContainer: {
+    backgroundColor: "#FFFFFF"
+  },
   view: {
-    marginTop: 30,
+    marginTop: scaleVertical(30),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   envelopButton: {
-    padding: 14,
+    padding: normalize(14),
     backgroundColor: '#F9FAFB',
-    borderRadius: 100,
+    borderRadius: normalize(100),
   },
   messageNumberContainer: {
     backgroundColor: '#F35BAC',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 10,
-    width: 10,
-    borderRadius: 10,
+    height: normalize(10),
+    width: normalize(10),
+    borderRadius: normalize(10),
     position: 'absolute',
-    right: 10,
-    top: 12,
+    right: normalize(10),
+    top: scaleVertical(12),
   },
   messageNumber: {
     color: '#fff',
