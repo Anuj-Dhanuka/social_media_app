@@ -77,3 +77,37 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+//Top Tab Navigation key prop issue 
+
+It seem to be an issue because of react version 18.3.1. And there is no official fix by react navigation package.
+
+here is the discussion link:
+
+https://github.com/react-navigation/react-navigation/issues/11989#issuecomment-2113658902
+
+
+
+And here is my fix solution. It work!!!
+
+step1. add patch-package into scripts
+
+"scripts": {
+    ...
+    "postinstall": "patch-package"
+ }
+step2. install patch-page
+
+npm install patch-package --save-dev
+
+step3. download path file and move it into /patches/react-native-tab-view+3.5.2.patch
+
+https://objects.githubusercontent.com/github-production-repository-file-5c1aeb/80149262/16710880?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240831%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240831T083407Z&X-Amz-Expires=300&X-Amz-Signature=b0a6c885aa5d80a47f2e283e083662e83a606d963e6e0f8878d41edfe11b717a&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=80149262&response-content-disposition=attachment%3Bfilename%3Dreact-native-tab-view%2B3.5.2.patch&response-content-type=text%2Fplain
+
+link for patch file - react-native-tab-view+3.5.2.patch
+
+
+
+step4. run patch command
+
+npx patch-package
